@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="page-container">
+    @if (carregando) {
+    <p>carregando</p>
+    }
+
+    @if (erro){
+    <p>{{erro}}</p>
+    }
+
+    @for (item of items; track item.id) {
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{item.name}} </ion-card-title>
+        <ion-card-subtitle>{{item.type}}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-button [routerLink]="['/card-details', item.id]">
+          Ver detalhes
+        </ion-button>
+        <ion-img src="{{item.card_images[0].image_url_small}}" alt="Logo"></ion-img>
+      </ion-card-content>
+    </ion-card>
+    }
+  </div>
+</ion-content>

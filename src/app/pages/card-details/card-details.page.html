@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/dashboard" text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalhes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  @if (item) {
+  <main>
+    <section>
+      <ion-img class="image" [src]="item.card_images?.[0].image_url" [alt]="item.name"></ion-img>
+
+      <div>
+        <ion-chip>{{ item.humanReadableCardType || item.type }}</ion-chip>
+
+        <ion-card-title>{{ item.name }}</ion-card-title>
+
+        <p>{{ item.desc }}</p>
+
+        <div>
+          <div>
+            <ion-card-title>Tipo</ion-card-title>
+            <ion-card-subtitle>{{ item.type }}</ion-card-subtitle>
+          </div>
+
+          <div>
+            <ion-card-title>Categoria</ion-card-title>
+            <ion-card-subtitle>{{ item.race || 'Não informado' }}</ion-card-subtitle>
+          </div>
+
+          <div>
+            <ion-card-title>Arquétipo</ion-card-title>
+            <ion-card-subtitle>{{ item.archetype || 'Não informado' }}</ion-card-subtitle>
+          </div>
+
+          <div>
+            <ion-card-title>Banlist</ion-card-title>
+            <ion-card-subtitle>{{ item.banlist_info?.ban_tcg || 'Livre' }}</ion-card-subtitle>
+          </div>
+        </div>
+
+        @if (item.card_prices?.length) {
+        <section>
+          <h2>Preços</h2>
+
+          <div>
+            <div>
+              <ion-card-title>Cardmarket</ion-card-title>
+              <ion-card-subtitle>$ {{ item.card_prices[0].cardmarket_price }}</ion-card-subtitle>
+            </div>
+
+            <div>
+              <ion-card-title>TCGPlayer</ion-card-title>
+              <ion-card-subtitle>$ {{ item.card_prices[0].tcgplayer_price }}</ion-card-subtitle>
+            </div>
+
+            <div>
+              <ion-card-title>Ebay</ion-card-title>
+              <ion-card-subtitle>$ {{ item.card_prices[0].ebay_price }}</ion-card-subtitle>
+            </div>
+          </div>
+        </section>
+        }
+
+        @if (item.card_sets?.length) {
+        <section>
+          <h2>Sets</h2>
+
+          @for (set of item.card_sets; track set.set_code) {
+          <div>
+            <ion-card-subtitle>{{ set.set_name }}</ion-card-subtitle>
+            <ion-card-title>{{ set.set_code }} - {{ set.set_rarity }}</ion-card-title>
+          </div>
+          }
+        </section>
+        }
+      </div>
+    </section>
+  </main>
+  } @else {
+  <div>
+    <p>Carregando detalhes...</p>
+  </div>
+  }
+</ion-content>
