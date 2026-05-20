@@ -1,0 +1,7 @@
+{
+  "name": "angular-faculdade-marlon",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
