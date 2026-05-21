@@ -4,13 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonChip, IonImg, IonButtons, IonBackButton, IonCardTitle, IonCardSubtitle } from '@ionic/angular/standalone';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api';
+import { TextoSeparadoIfenPipe } from 'src/app/pipes/texto-separado-ifen-pipe';
 
 @Component({
   selector: 'app-card-details',
   templateUrl: './card-details.page.html',
   styleUrls: ['./card-details.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonChip, IonImg, IonButtons, IonBackButton, IonCardTitle, IonCardSubtitle]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonChip, IonImg, IonButtons, IonBackButton, IonCardTitle, IonCardSubtitle, TextoSeparadoIfenPipe]
 })
 export class CardDetailsPage implements OnInit {
   id: string | null = null;
