@@ -15,7 +15,7 @@
     }
 
     @for (item of items; track item.id) {
-    <ion-card>
+    <ion-card [appHighlightType]="item.type">
       <ion-card-header>
         <ion-card-title>{{item.name}} </ion-card-title>
         <ion-card-subtitle>{{item.type}}</ion-card-subtitle>
